@@ -26,6 +26,11 @@ const appRoutes: Routes = [
             .then(module => module.FeatureModule)
     },
     {
+        path: 'autenticacion',
+        loadChildren: () => import('@autenticacion/autenticacion.module')
+            .then(module => module.AutenticacionModule)
+    },
+    {
         path: '**',
         redirectTo: 'sample'
     }
