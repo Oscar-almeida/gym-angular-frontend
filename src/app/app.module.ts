@@ -21,7 +21,12 @@ import { CoreModule } from './main/core/core.module';
 
 const appRoutes: Routes = [
     {
-        path      : '**',
+        path: 'app',
+        loadChildren: () => import('@feature/feature.module')
+            .then(module => module.FeatureModule)
+    },
+    {
+        path: '**',
         redirectTo: 'sample'
     }
 ];
@@ -30,7 +35,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -57,10 +62,9 @@ const appRoutes: Routes = [
         SampleModule,
         CoreModule
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }

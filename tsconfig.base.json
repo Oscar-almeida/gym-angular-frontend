@@ -22,8 +22,11 @@
             "@fuse": [
                 "@fuse/"
             ],
-            "core/*": [
+            "@core/*": [
                 "app/main/core/*"
+            ],
+            "@feature/*": [
+                "app/main/feature/*"
             ]
         }
     },
