@@ -17,10 +17,26 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { CoreModule } from './main/core/core.module';
+import { AutenticadoGuard, NoAutenticadoGuard } from '@core/guards';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeDbService } from './fake-db/fake-db.service';
 
 const appRoutes: Routes = [
     {
-        path      : '**',
+        path: 'app',
+        loadChildren: () => import('@feature/feature.module')
+            .then(module => module.FeatureModule),
+        canActivate: [NoAutenticadoGuard]
+    },
+    {
+        path: 'autenticacion',
+        loadChildren: () => import('@autenticacion/autenticacion.module')
+            .then(module => module.AutenticacionModule),
+        canActivate: [AutenticadoGuard]
+    },
+    {
+        path: '**',
         redirectTo: 'sample'
     }
 ];
@@ -29,13 +45,17 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
 
         TranslateModule.forRoot(),
+        InMemoryWebApiModule.forRoot(FakeDbService, {
+            delay: 0,
+            passThruUnknownUrl: true
+        }),
 
         // Material moment date module
         MatMomentDateModule,
@@ -53,12 +73,12 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        SampleModule
+        SampleModule,
+        CoreModule
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }
