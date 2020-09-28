@@ -8,6 +8,8 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
+import { AutenticacionService, JwtService } from '@core/services';
+import { Router } from '@angular/router';
 
 @Component({
     selector     : 'toolbar',
@@ -26,6 +28,10 @@ export class ToolbarComponent implements OnInit, OnDestroy
     selectedLanguage: any;
     userStatusOptions: any[];
 
+    userName:string = '';
+    userEmail:string = '';
+    userAvatar:string = '';
+
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -39,7 +45,8 @@ export class ToolbarComponent implements OnInit, OnDestroy
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
-        private _translateService: TranslateService
+        private _translateService: TranslateService,
+        private _autenticacionService:AutenticacionService
     )
     {
         // Set the defaults
@@ -110,6 +117,10 @@ export class ToolbarComponent implements OnInit, OnDestroy
 
         // Set the selected language from default languages
         this.selectedLanguage = _.find(this.languages, {id: this._translateService.currentLang});
+
+        this.userName = this._autenticacionService.ObtenerCurrentUser().nombres;
+        this.userEmail= this._autenticacionService.ObtenerCurrentUser().email;
+        this.userAvatar = this._autenticacionService.ObtenerCurrentUser().imagen;
     }
 
     /**
@@ -159,5 +170,9 @@ export class ToolbarComponent implements OnInit, OnDestroy
 
         // Use the selected language for translations
         this._translateService.use(lang.id);
+    }
+
+    OnLogout(){
+        this._autenticacionService.LogoutCurrentUser();
     }
 }

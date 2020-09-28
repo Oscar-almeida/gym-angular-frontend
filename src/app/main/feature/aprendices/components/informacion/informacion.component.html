@@ -1,0 +1,70 @@
+<div id="about" class="p-24" fxLayout="row wrap">
+
+    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65">
+
+        <div class="profile-box info-box general" fxLayout="column">
+
+            <header class="accent">
+                <div class="title">Informacion General</div>
+            </header>
+
+            <div class="content">
+                <div class="info-line">
+                    <div class="title">Nombre</div>
+                    <div class="info">{{aprendiz.nombres + " " + aprendiz.apellidos}}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">Identificacion</div>
+                    <div class="info">{{aprendiz.identificacion}}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">Genero</div>
+                    <div class="info">{{aprendiz.genero}}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">Ficha de formacion</div>
+                    <div class="info">{{aprendiz.ficha}}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">Edad</div>
+                    <div class="info">{{aprendiz.edad}}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">Tipo de sangre</div>
+                    <div class="info">{{aprendiz.rh}}</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="profile-box info-box contact" fxLayout="column">
+
+            <header class="accent">
+                <div class="title">Contacto</div>
+            </header>
+
+            <div class="content">
+                <div class="info-line">
+                    <div class="title">Tel. Celular</div>
+                        <span class="info">{{aprendiz.telefonoCelular}}</span>
+                </div>
+                <div class="info-line">
+                    <div class="title">Tel. Fijo</div>
+                        <span class="info">{{aprendiz.telefonoFijo}}</span>
+                </div>
+                <div class="info-line">
+                    <div class="title">Correo electronico</div>
+                        <span class="info">{{aprendiz.email}}</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

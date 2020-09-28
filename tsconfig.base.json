@@ -22,11 +22,14 @@
             "@fuse": [
                 "@fuse/"
             ],
-            "autenticacion/*": [
-                "app/main/autenticacion/*"
+            "@core/*": [
+                "app/main/core/*"
             ],
-            "caracteristicas/*": [
-                "app/main/caracteristicas/*"
+            "@feature/*": [
+                "app/main/feature/*"
+            ],
+            "@autenticacion/*": [
+                "app/main/autenticacion/*"
             ]
         }
     },

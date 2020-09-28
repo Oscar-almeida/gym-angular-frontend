@@ -14,6 +14,7 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { navigation } from 'app/navigation/navigation';
 import { locale as navigationEnglish } from 'app/navigation/i18n/en';
 import { locale as navigationTurkish } from 'app/navigation/i18n/tr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector   : 'app',
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit, OnDestroy
         private _fuseSplashScreenService: FuseSplashScreenService,
         private _fuseTranslationLoaderService: FuseTranslationLoaderService,
         private _translateService: TranslateService,
-        private _platform: Platform
+        private _platform: Platform,
+        private _titleService:Title
     )
     {
         // Get default navigation
@@ -71,6 +73,9 @@ export class AppComponent implements OnInit, OnDestroy
 
         // Use a language
         this._translateService.use('en');
+
+        // Set title app
+        this._titleService.setTitle('Sistema GYM');
 
         /**
          * ----------------------------------------------------------------------------------------------------
