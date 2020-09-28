@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { FeatureRoutingModule } from './feature-routing.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
+    FuseSharedModule,
     FeatureRoutingModule
   ]
 })

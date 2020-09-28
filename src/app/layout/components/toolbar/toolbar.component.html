@@ -28,8 +28,8 @@
             <button mat-button [matMenuTriggerFor]="userMenu"
                     class="user-button">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
-                    <span class="username mr-12" fxHide fxShow.gt-sm>Charlie Adams</span>
+                    <img class="avatar mr-0 mr-sm-16" [src]="userAvatar">
+                    <span class="username mr-12" fxHide fxShow.gt-sm>{{userName}}</span>
                     <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
                 </div>
             </button>
@@ -46,7 +46,7 @@
                     <span>Inbox</span>
                 </button>
 
-                <button mat-menu-item class="">
+                <button mat-menu-item class="" (click)="OnLogout()">
                     <mat-icon>exit_to_app</mat-icon>
                     <span>Logout</span>
                 </button>
@@ -59,7 +59,7 @@
 
             <div class="toolbar-separator"></div>
 
-            <button mat-button fxHide fxShow.gt-xs
+            <!-- <button mat-button fxHide fxShow.gt-xs
                     class="language-button"
                     [matMenuTriggerFor]="languageMenu">
                 <div fxLayout="row" fxLayoutAlign="center center">
@@ -79,7 +79,7 @@
 
             </mat-menu>
 
-            <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
+            <!-- <div class="toolbar-separator" fxHide fxShow.gt-xs></div>  -->
 
             <button mat-icon-button
                     class="quick-panel-toggle-button"

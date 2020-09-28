@@ -1,0 +1,199 @@
+<div id="aprendiz" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/app/aprendices'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div class="aprendiz-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="aprendiz.imagen" [src]="aprendiz.imagen">
+                    <img *ngIf="!aprendiz.imagen" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div>
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='editar'">
+                        {{aprendiz.nombres}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='nuevo'">
+                        Nuevo aprendiz
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Aprendiz Detalles</span>
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button
+                    class="save-aprendiz-button"
+                    [disabled]="aprendizForm.invalid"
+                    (click)="CrearAprendiz()"
+                    *ngIf="pageType ==='nuevo'">
+                <span>AGREGAR</span>
+            </button>
+
+            <button mat-raised-button
+                    class="save-aprendiz-button"
+                    [disabled]="aprendizForm.invalid || aprendizForm.pristine"
+                    (click)="ModificarAprendiz()"
+                    *ngIf="pageType ==='editar'" >
+                <span>GUARDAR</span>
+            </button>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="aprendizForm" [formGroup]="aprendizForm" class="aprendiz w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Informacion basica">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Identificación</mat-label>
+                                    <input matInput placeholder="Identificacion"
+                                           type="number"
+                                           name="identificacion"
+                                           formControlName="identificacion"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Nombres</mat-label>
+                                    <input matInput placeholder="Nombres"
+                                           name="nombres"
+                                           formControlName="nombres"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Apellidos</mat-label>
+                                    <input matInput placeholder="Apellidos"
+                                           name="apellidos"
+                                           formControlName="apellidos"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Edad</mat-label>
+                                    <input matInput placeholder="Edad"
+                                           type="number"
+                                           name="edad"
+                                           formControlName="edad"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Genero</mat-label>
+                                    <input matInput placeholder="Genero"
+                                           name="genero"
+                                           formControlName="genero"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Grupo Sanguineo</mat-label>
+                                    <input matInput placeholder="Grupo Sanguineo"
+                                           name="rh"
+                                           formControlName="rh"
+                                           required>
+                                </mat-form-field>
+
+                            </div>
+
+                        </mat-tab>
+
+                        <mat-tab label="Contacto">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput placeholder="example@misena.edu.co"
+                                           type="email"
+                                           name="email"
+                                           formControlName="email"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Telefono celular</mat-label>
+                                    <input matInput placeholder="Telefono celular"
+                                           type="number"
+                                           name="telefonoCelular"
+                                           formControlName="telefonoCelular"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Telefono fijo</mat-label>
+                                    <input matInput placeholder="Telefono fijo"
+                                           type="number"
+                                           name="telefonoFijo"
+                                           formControlName="telefonoFijo"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Ficha</mat-label>
+                                    <input matInput placeholder="Ficha"
+                                           type="number"
+                                           name="ficha"
+                                           formControlName="ficha"
+                                           required>
+                                </mat-form-field>
+                            </div>
+
+                        </mat-tab>
+
+                        <mat-tab label="Imagen">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>                                
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Cargar imagen de aprendiz</mat-label>
+                                    <input matInput placeholder="Url temporal"
+                                           type="url"
+                                           name="imagen"
+                                           formControlName="imagen"
+                                           type="text">
+                                </mat-form-field>
+
+                            </div>
+
+                        </mat-tab>
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
