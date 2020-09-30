@@ -28,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: EjercicioComponent
+    component: EjercicioComponent,
+    resolve: { ejercicio: EjercicioResolveService }
   },
   {
     path: 'nuevo',

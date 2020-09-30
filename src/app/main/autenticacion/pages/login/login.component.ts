@@ -54,26 +54,27 @@ export class LoginComponent implements OnInit {
   }
 
   OnLogin(): void {
-    this._fuseProgressBarService.show();
+    this._router.navigate(["/"])
+    // this._fuseProgressBarService.show();
 
-    const credenciales: LoginUser = {
-      email: this.loginForm.controls.email.value,
-      contrasenha: this.loginForm.controls.password.value
-    }
+    // const credenciales: LoginUser = {
+    //   email: this.loginForm.controls.email.value,
+    //   contrasenha: this.loginForm.controls.password.value
+    // }
 
-    this._autenticacionService.LoginAdministrador(credenciales)
-      .subscribe(response => {
-        this._fuseProgressBarService.hide();
-        this._router.navigate(['/']);
-      },
-        error => {
-          this._fuseProgressBarService.hide();
-          this._matSnackBar.open(`${error}`, 'Ok', {
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom',
-            duration: 7000
-          });
-        });
+    // this._autenticacionService.LoginAdministrador(credenciales)
+    //   .subscribe(response => {
+    //     this._fuseProgressBarService.hide();
+    //     this._router.navigate(['/']);
+    //   },
+    //     error => {
+    //       this._fuseProgressBarService.hide();
+    //       this._matSnackBar.open(`${error}`, 'Ok', {
+    //         horizontalPosition: 'right',
+    //         verticalPosition: 'bottom',
+    //         duration: 7000
+    //       });
+    //     });
   }
 
 }

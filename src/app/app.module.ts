@@ -27,13 +27,13 @@ const appRoutes: Routes = [
         path: 'app',
         loadChildren: () => import('@feature/feature.module')
             .then(module => module.FeatureModule),
-        canActivate: [NoAutenticadoGuard]
+        // canActivate: [NoAutenticadoGuard]
     },
     {
         path: 'autenticacion',
         loadChildren: () => import('@autenticacion/autenticacion.module')
             .then(module => module.AutenticacionModule),
-        canActivate: [AutenticadoGuard]
+        // canActivate: [AutenticadoGuard]
     },
     {
         path: '**',
