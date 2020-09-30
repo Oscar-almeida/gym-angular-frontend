@@ -79,7 +79,7 @@ export class InventarioResolveService implements Resolve<InventarioLectura[] | I
     return this._inventarioService.AgregarInventario(inventario);
   }
 
-  ModificarProducto(inventario: InventarioCrear, id: number): Observable<void> {
+  ModificarInventario(inventario: InventarioCrear, id: number): Observable<void> {
     return this._inventarioService.ModificarInventario(inventario, id);
   }
 

@@ -23,8 +23,7 @@ export class MusculoResolveService implements Resolve<MusculoLectura | MusculoLe
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MusculoLectura | MusculoLectura[] | Observable<MusculoLectura | MusculoLectura[]> | Promise<MusculoLectura | MusculoLectura[]> {
-    this.routeParams = route['id'];
-
+    this.routeParams = route.params['id'];
     if (this.routeParams)
       return new Promise((resolve, reject) => {
         Promise.all([

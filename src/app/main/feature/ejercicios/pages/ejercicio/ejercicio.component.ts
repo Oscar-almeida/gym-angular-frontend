@@ -2,9 +2,12 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MusculoLectura } from '@core/models';
+import { EjercicioCrear } from '@core/models/Ejercicio/EjercicioCrear';
 import { EjercicioLectura } from '@core/models/Ejercicio/EjercicioLectura';
 import { EjercicioResolveService } from '@feature/ejercicios/services';
 import { fuseAnimations } from '@fuse/animations';
+import { error } from 'protractor';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -20,6 +23,7 @@ export class EjercicioComponent implements OnInit, OnDestroy {
   ejercicio: EjercicioLectura;
   pageType: string;
   ejercicioForm: FormGroup;
+  musculos: MusculoLectura[];
 
   private _unsubscribeAll: Subject<any>;
 
@@ -53,6 +57,7 @@ export class EjercicioComponent implements OnInit, OnDestroy {
         }
         this.ejercicioForm = this.CrearFormulario();
       });
+    this.musculos = this._ejerciciosResolveService.musculos;
   }
 
   ngOnDestroy(): void {
@@ -60,13 +65,55 @@ export class EjercicioComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.complete();
   }
 
-  CrearFormulario(): FormGroup {
+  private CrearFormulario(): FormGroup {
     return this._formBuilder.group({
       nombre: [this.ejercicio.nombre],
       descripcion: [this.ejercicio.descripcion],
       musculoId: [this.ejercicio.musculoId],
       imagen: [this.ejercicio.imagen]
     });
+  }
+
+  CrearEjercicio(): void {
+    const ejercicio: EjercicioCrear = this.ejercicioForm.getRawValue();
+    this._ejerciciosResolveService.CrearEjercicio(ejercicio)
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(response => {
+        this._ejerciciosResolveService.onEjercicioCambios.next(response);
+        this._matSnackBar.open('Ejercicio creado', 'Ok', {
+          verticalPosition: 'bottom',
+          horizontalPosition: 'right',
+          duration: 5000
+        });
+        this._router.navigate(['/app/ejercicios']);
+      },
+        error => {
+          this._matSnackBar.open('¡Error! Intenta de nuevo', 'Ok', {
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+            duration: 5000
+          });
+        });
+  }
+
+  ModificarEjercicio(): void {
+    const ejercicio: EjercicioCrear = this.ejercicioForm.getRawValue();
+    ejercicio.id = this.ejercicio.id;
+    this._ejerciciosResolveService.ModificarEjercicio(ejercicio, ejercicio.id)
+      .subscribe(response => {
+        this._matSnackBar.open('Ejercicio modificado', 'Ok', {
+          verticalPosition: 'bottom',
+          horizontalPosition: 'right',
+          duration: 5000
+        });
+      },
+        error => {
+          this._matSnackBar.open('Inventario creado', 'Ok', {
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+            duration: 5000
+          });
+        });
   }
 
 }

@@ -93,7 +93,7 @@
                 <ng-container matColumnDef="musculoId">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Musculo</mat-header-cell>
                     <mat-cell *matCellDef="let ejercicio">
-                        <p class="text-truncate">{{ejercicio.musculoId}}</p>
+                        <p class="text-truncate">{{ejercicio.musculoId | idToMusculo}}</p>
                     </mat-cell>
                 </ng-container>
 

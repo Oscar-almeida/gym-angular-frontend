@@ -19,6 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { IdToMusculoPipe } from './pipes/id-to-musculo.pipe';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [EjerciciosComponent, EjercicioComponent],
+  declarations: [EjerciciosComponent, EjercicioComponent, IdToMusculoPipe],
   imports: [
     RouterModule.forChild(routes),
 
