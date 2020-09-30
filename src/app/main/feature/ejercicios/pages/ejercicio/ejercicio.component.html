@@ -1,1 +1,120 @@
-<p>ejercicio works!</p>
+<div id="ejercicio" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/app/ejercicios'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div class="ejercicio-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="ejercicio.imagen" [src]="ejercicio.imagen">
+                    <img *ngIf="!ejercicio.imagen" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div>
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='editar'">
+                        {{ejercicio.nombre}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='nuevo'">
+                        Nuevo ejercicio
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>ejercicio Detalles</span>
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button
+                    class="save-ejercicio-button"
+                    [disabled]="ejercicioForm.invalid"
+                    *ngIf="pageType ==='nuevo'">
+                <span>AGREGAR</span>
+            </button>
+
+            <button mat-raised-button
+                    class="save-ejercicio-button"
+                    [disabled]="ejercicioForm.invalid || ejercicioForm.pristine"
+                    *ngIf="pageType ==='editar'" >
+                <span>GUARDAR</span>
+            </button>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="ejercicioForm" [formGroup]="ejercicioForm" class="ejercicio w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Informacion basica">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput placeholder="Nombre"
+                                           name="nombre"
+                                           formControlName="nombre"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>ejercicio descripcion</mat-label>
+                                    <textarea matInput placeholder="ejercicio descripcion"
+                                              name="descripcion"
+                                              formControlName="descripcion"
+                                              rows="5">
+                                    </textarea>
+                                </mat-form-field>
+
+                            </div>
+
+                        </mat-tab>
+
+                        <mat-tab label="Imagen">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>                                
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Cargar imagen de ejercicio</mat-label>
+                                    <input matInput placeholder="Url temporal"
+                                           name="imagen"
+                                           formControlName="imagen"
+                                           type="text">
+                                </mat-form-field>
+
+                            </div>
+
+                        </mat-tab>
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
