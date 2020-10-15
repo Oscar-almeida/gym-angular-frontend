@@ -40,6 +40,7 @@
             <button mat-raised-button
                     class="save-ejercicio-button"
                     [disabled]="ejercicioForm.invalid"
+                    (click)="CrearEjercicio()"
                     *ngIf="pageType ==='nuevo'">
                 <span>AGREGAR</span>
             </button>
@@ -47,6 +48,7 @@
             <button mat-raised-button
                     class="save-ejercicio-button"
                     [disabled]="ejercicioForm.invalid || ejercicioForm.pristine"
+                    (click)="ModificarEjercicio()"
                     *ngIf="pageType ==='editar'" >
                 <span>GUARDAR</span>
             </button>
@@ -86,6 +88,21 @@
 
                             </div>
 
+                        </mat-tab>
+
+                        <mat-tab label="Musculo">
+
+                            <div class="tab-content p-24">
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Musculo</mat-label>
+                                    <mat-select formControlName="musculoId">
+                                        <mat-option *ngFor="let musculo of musculos" [value]="musculo.id">
+                                            {{ musculo.id + ' - ' +musculo.nombre }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
                         </mat-tab>
 
                         <mat-tab label="Imagen">

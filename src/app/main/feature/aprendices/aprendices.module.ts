@@ -18,7 +18,7 @@ import { FuseWidgetModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { HistorialComponent, InformacionComponent, RutinasComponent } from './components';
 import { AprendicesComponent, AprendizComponent, AprendizFormComponent } from './pages';
-import { AprendicesResolveService, RutinasResolveService } from './services';
+import { AprendicesResolveService, HistorialAsistenciaResolveService, RutinasResolveService } from './services';
 
 const routes: Routes = [
   {
@@ -42,7 +42,8 @@ const routes: Routes = [
     component: AprendizComponent,
     resolve: {
       aprendiz: AprendicesResolveService,
-      rutinas: RutinasResolveService
+      rutinas: RutinasResolveService,
+      historialAsistencia: HistorialAsistenciaResolveService
     }
   },
   {
@@ -84,7 +85,8 @@ const routes: Routes = [
   ],
   providers: [
     AprendicesResolveService,
-    RutinasResolveService
+    RutinasResolveService,
+    HistorialAsistenciaResolveService
   ]
 })
 export class AprendicesModule { }

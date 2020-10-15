@@ -87,6 +87,7 @@ $typography: mat-typography-config(
 @import "src/assets/styles/informacion.theme";
 @import "src/assets/styles/aprendices.theme";
 @import "src/assets/styles/ejercicios.theme";
+@import "src/assets/styles/historial-asistencia.theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -100,6 +101,7 @@ $typography: mat-typography-config(
     @include informacion-theme($theme);
     @include aprendices-theme($theme);
     @include ejercicios-theme($theme);
+    @include historial-asistencia-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

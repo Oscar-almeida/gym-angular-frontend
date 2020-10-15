@@ -13,6 +13,6 @@ export class RutinasService {
   ) { }
 
   ObtenerRutinasPorAprendiz(identificacion: string): Observable<Rutina[]> {
-    return this._apiService.Get<Rutina[]>(`${this._path}/${identificacion}`);
+    return this._apiService.Get<Rutina[]>(`${this._path}/aprendiz/${identificacion}`);
   }
 }

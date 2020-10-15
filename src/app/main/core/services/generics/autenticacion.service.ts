@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Administrador, CurrentUser } from '@core/models';
+import { CurrentUser } from '@core/models';
 import { LoginUser } from '@core/models/user/LoginUser';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

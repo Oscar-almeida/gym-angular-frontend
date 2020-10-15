@@ -78,8 +78,7 @@ export class MusculoComponent implements OnInit {
           horizontalPosition: 'right',
           duration: 5000
         });
-
-        this._router.navigate(['/app/musculo']);
+        this._router.navigate(['/app/musculos']);
       },
         error => {
           this._matSnackBar.open('¡Error! Intenta de nuevo', 'Ok', {

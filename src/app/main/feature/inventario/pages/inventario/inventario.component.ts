@@ -103,7 +103,7 @@ export class InventarioComponent implements OnInit, OnDestroy {
   ModificarInventario(): void {
     const inventario: InventarioCrear = this.inventarioForm.getRawValue();
     inventario.id = this.inventario.id;
-    this._inventarioResolveService.ModificarProducto(inventario, this.inventario.id)
+    this._inventarioResolveService.ModificarInventario(inventario, this.inventario.id)
       .subscribe(response => {
         this._matSnackBar.open('Inventario guardado', 'Ok', {
           verticalPosition: 'bottom',

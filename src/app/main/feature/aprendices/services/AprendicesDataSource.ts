@@ -93,8 +93,6 @@ export class AprendicesDataSource extends DataSource<AprendizLectura> {
                 case 'ficha':
                     [propertyA, propertyB] = [a.email, b.email];
                     break;
-
-
             }
 
             const valueA = isNaN(+propertyA) ? propertyA : + propertyA;

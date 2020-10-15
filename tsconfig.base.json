@@ -30,6 +30,12 @@
             ],
             "@autenticacion/*": [
                 "app/main/autenticacion/*"
+            ],
+            "@administrador/*": [
+                "app/main/administrador/*"
+            ],
+            "@calendario-eventos/*": [
+                "app/main/calendario-eventos/*"
             ]
         }
     },

@@ -21,6 +21,11 @@ const routes: Routes = [
     path: 'musculos',
     loadChildren: () => import('@feature/musculos/musculos.module')
       .then(module => module.MusculosModule)
+  },
+  {
+    path: 'historial-asistencia',
+    loadChildren: () => import('@feature/historial-asistencia/historial-asistencia.module')
+      .then(module => module.HistorialAsistenciaModule)
   }
 ];
 

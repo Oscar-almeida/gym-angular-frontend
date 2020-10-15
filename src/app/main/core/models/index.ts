@@ -9,3 +9,4 @@ export * from './Aprendiz/AprendizCrear';
 export * from './Aprendiz/AprendizLectura';
 export * from './Rutina/Rutina';
 export * from './Rutina/RutinaEjercicio';
+export * from './HistorialAsistencia/HistorialAsistencia';
