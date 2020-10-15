@@ -2,10 +2,17 @@ import { FuseNavigation } from '@fuse/types';
 
 export const navigation: FuseNavigation[] = [
     {
-        id: 'aplicaciones',
-        title: 'Aplicaciones',
+        id: 'administracion',
+        title: 'Administracion',
         type: 'group',
         children: [
+            {
+                id: 'historial-asistencia',
+                title: 'Historial de asistencia',
+                type: 'item',
+                icon: 'list',
+                url: '/app/historial-asistencia'
+            },
             {
                 id: 'aprendices',
                 title: 'Aprendices',
@@ -33,20 +40,20 @@ export const navigation: FuseNavigation[] = [
                 type: 'item',
                 icon: 'favorite',
                 url: '/app/musculos'
-            },
+            }
+        ]
+    },
+    {
+        id: 'aplicaciones',
+        title: 'Aplicaciones',
+        type: 'group',
+        children: [
             {
-                id: 'sample',
-                title: 'Sample',
-                translate: 'NAV.SAMPLE.TITLE',
+                id: 'calendario-eventos',
+                title: 'Calendario de eventos',
                 type: 'item',
-                icon: 'email',
-                url: '/sample',
-                badge: {
-                    title: '25',
-                    translate: 'NAV.SAMPLE.BADGE',
-                    bg: '#F44336',
-                    fg: '#FFFFFF'
-                }
+                icon: 'calendar_today',
+                url: '/eventos/calendario'
             }
         ]
     },
